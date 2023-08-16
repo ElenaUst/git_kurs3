@@ -24,6 +24,18 @@ def mask_from_to_msg(msg):
     return mask_msg
 
 
-print(mask_from_to_msg("Счет 3152479541115065"))
+def filter_and_sort_data(data):
+    """
+    Фильтрует транзакции по EXECUTED, получает список успешных транзакций, отсортированный по дате
+    :param data: начальный список данных, полученный из файла json
+    :return: список, содержащий только успешные транзакции, отсортированный по дате, начиная с последней
+    """
+    modify_data = []
+    for el in data:
+        if el.get('state') == 'EXECUTED':
+             modify_data.append(el)
+             modify_data_1 = sorted(modify_data, key=lambda x: x['date'], reverse=True)
+    return modify_data_1
+
 
 
