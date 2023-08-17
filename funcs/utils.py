@@ -35,8 +35,8 @@ def filter_and_sort_data(data):
     for el in data:
         if el.get('state') == 'EXECUTED':
             modify_data.append(el)
-            modify_data_1 = sorted(modify_data, key=lambda x: x['date'], reverse=True)
-    return modify_data_1
+    return sorted(modify_data, key=lambda x: x['date'], reverse=True)
+
 
 
 def prepare_user_msg(operation):
